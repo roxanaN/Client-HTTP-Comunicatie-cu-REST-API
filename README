@@ -1,0 +1,50 @@
+Nemulescu Roxana-Elena
+322CA
+
+TEMA 3
+
+Pentru implementarea temei, am folosit scheletul din laboratorul de http.
+Pentru fiecare cerere, am folosit urmatoarea structura:
+    *   Pas 1: Se deschide conexiunea
+               -> (open_connection)
+    *   Pas 2: Se creaza mesajul de request, in functie de metoda ceruta
+               -> (compute_get_request / compute_post_request)
+    *   Pas 3: Se trimite mesajul la server
+               -> (send_to_server)
+    *   Pas 4: Se primeste raspuns de la server
+               -> (receive_from_server)
+    *   Pas 5: Se inchide conexiunea cu serverul
+               -> (close_connection)
+
+Etapa1:
+    Pentru prima etapa, am accesat url-ul "/task1/start" si
+    am retinut raspunsul in response.
+Etapa2:
+    Am parsat raspunsul primit in prima etapa, folosind functiile
+    din parson.c, am format credentialele pentru logare si am trimis
+    o cerere la url-ul extras din obiectul JSON.
+Etapa3:
+    Spre deosebire de etapa 2, pentru etapa 3 am concatenat raspunsurile
+    ghicitorilor si id-ul in url_params, pe care l-am dat ca parametru
+    functiei de request.
+Etapa4:
+    Aceasta etapa a constat in trimiterea unei cereri, folosind
+    datele din raspunsul precedent.
+Etapa5:
+    Pentru ultima etapa, am parsat raspunsul primit la etapa 4 si
+    am obtinut ip-ul pentru request, folosind structura functiei
+    din laboratorul de dns (get_ip). In urma request-ului, am
+    primit, printre altele, detaliile cerute despre vreme, pe care
+    le-am trimis in ultimul request.
+
+Functiile implementate in afara scheletului de laborator, se gasesc
+in fisierul functions.c.
+
+Functia get_cookies:
+    Pentru a extrage toate cookie-urile, am procedat in felul urmator:
+    De la fiecare Set-Cookie, am luat perechea <nume=valoare>
+    (aflata dupa "Set-Cookie: " - motiv pentru care am adaugat over_the_cookie
+    la adresa de start) si am adaugat-o in "lista" de cookies.
+
+Nu am mancat prajituricile pe drum. Deoarece "dar din dar, se face rai",
+am trimis prajituricile in fiecare mesaj request.
